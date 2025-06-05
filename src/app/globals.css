@@ -1,26 +1,157 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
+  /* 定义字体变量 */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* 修正字体名称引号 */
+    --font-ebrima: 'Ebrima', sans-serif;
+    --font-simkai: 'SimKai', serif;
+    
+    /* ...其他变量保持不变... */
+  }
+
+  /* 为 Ebrima 字体创建 @font-face 规则 */
+  @font-face {
+    font-family: 'Ebrima';
+    src: url('/fronts/EBRIMA.TTF') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Ebrima';
+    src: url('/fronts/EBRIMABD.TTF') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* 为 SimKai 字体创建 @font-face 规则 */
+  @font-face {
+    font-family: 'SimKai';
+    src: url('/fronts/SIMKAI.TTF') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* 添加动画效果 */
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes grid-pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes fade-in-up {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes scroll {
+  0% { 
+    transform: translateY(0); 
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(8px); 
+    opacity: 0.2;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* 应用动画类 */
+.animate-gradient-flow {
+  background-size: 200% 200%;
+  animation: gradient-flow 10s ease infinite;
+}
+
+.animate-grid-pulse {
+  animation: grid-pulse 3s ease infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1.5s ease infinite;
+}
+
+.animate-typewriter {
+  animation: typewriter 3s steps(40, end) 1s 1 normal both;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-scroll {
+  animation: scroll 1.5s ease infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 其他工具类 */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+  /* 应用主要字体到 body */
+  body {
+    font-family: var(--font-ebrima), -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply bg-background text-foreground;
+  }
+  
+  /* 其他样式保持不变... */
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500;
+}
+
+.font-calligraphy {
+  font-family: var(--font-simkai), serif;
+}
+
+.footer-link {
+  @apply text-muted-foreground hover:text-foreground transition-colors;
 }

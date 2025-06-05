@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hi, I'm",
+      "viewProjects": "View Projects",
+      "contactMe": "Contact Me"
+    },
+    "about": {
+      "title": "About Me",
+      "skills": "Skills"
+    },
+    "projects": {
+      "title": "Featured Projects",
+      "viewAll": "View All",
+      "viewProject": "View Project"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Let's connect and collaborate"
+    }
+  },
+  "projects": {
+    "title": "My Projects",
+    "filter": {
+      "all": "All",
+      "featured": "Featured"
+    }
+  }
+}

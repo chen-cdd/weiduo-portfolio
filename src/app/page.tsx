@@ -265,23 +265,26 @@ export default function Home() {
               {
                 company: "德融宝科技（深圳）有限公司",
                 position: "AI产品经理",
+                project: "AI 驱动的传感器行业智能服务产品",
                 period: "2025.02 - 至今",
-                description: "Developed and maintained responsive web applications using React and TypeScript. Collaborated with the design team to implement UI components.",
-                technologies: ["React", "TypeScript", "TailwindCSS"]
+                description: "商业成果：针对传感器行业选型周期长、服务成本高的痛点，参与产品功能从 0 到 1 落地。独立设计的产品原型获北方兵工业集团高度认可，为公司赢取百万级合同奠定了关键基础。性能优化：负责 AI Agent 核心工作流与 Prompt 设计，通过测试将“智能产品选型”任务成功率提升 85%，显著缩短了潜在销售周期。技术基建：主导构建了项目核心的 RAG 知识库，处理并向量化逾 9 万条行业数据，打造了可复用的 AI 服务底层资产。",
+                technologies: ["RAG", "AI Agent", "从 0 到 1 (产品全周期)", "Prompt Engineering", "提效降本", "高保真原型", "知识库构建"]
               },
               {
                 company: "JuniGO",
                 position: "产品经理",
-                period: "Fall 2022",
-                description: "Created user interfaces for mobile applications. Conducted user research and usability testing to improve product design.",
-                technologies: ["Figma", "web3", "defi", "支付钱包","竞品分析","产品分析"]
+                project: "AI 赋能的 Web3 安全支付钱包 (PayFi)",
+                period: "2024.09 - 2025.02",
+                description: "项目背景 (Why):当前 Web3 市场机遇与风险并存，用户面临着日益猖獗的资产盗窃和洗钱风险，同时产品体验普遍复杂。本项目的核心目标是，通过深度行业洞察，并结合 AI 技术，设计一款兼具极致安全与易用性的新一代支付钱包产品（PayFi），抢占 Web3 安全赛道入口。核心职责与成果 (How & What):策略输入与方向定义： 独立进行 Web3 行业研究，通过分析头部项目与技术趋势（如 ZKP, DID），撰写多份深度报告。成功提炼出多个高潜力应用场景，为团队确立“AI+安全”的产品方向提供了关键决策依据。产品设计与落地： 负责 PayFi 钱包 MVP 的核心设计工作，独立完成 Figma 高保真原型及 PRD 文档，有效支持了产品从 0 到 1 的概念验证和研发启动。前沿应用探索： 探索总结了 AI 在 DeFi 安全领域的应用探索，聚焦于反洗钱(AML)、异常行为分析及交易风险预警，为产品构建长期技术壁垒进行了前瞻性布局。",
+                technologies: ["Web3 / DeFi", "AI 安全 (AI Security)", "产品设计", "支付钱包","竞品分析","MVP","高保真原型 (Figma)","反洗钱 (AML)"]
               },
               {
                 company: "明略科技集团",
-                position: "UI/UX Design Intern",
-                period: "Fall 2022",
-                description: "Created user interfaces for mobile applications. Conducted user research and usability testing to improve product design.",
-                technologies: ["Figma", "Adobe XD", "Prototyping"]
+                position: "大模型产品经理",
+                project: "企业级 AI 智能营销平台",
+                period: "2024.07 - 2024.09",
+                description: "项目背景 (Why):在数字营销领域，企业普遍面临两大瓶颈：1）内容生产效率低，难以规模化产出高质量、个性化的营销文案；2）数据洞察滞后，难以从海量社媒数据中快速获取有效用户反馈以指导决策。本项目旨在打造一款 AI 驱动的营销平台，核心是实现内容创作的自动化和用户洞察的智能化，赋能企业实现降本增效与精准营销。核心职责与成果 (How & What):AIGC 内容提效： 主导 AI 营销内容生成模块，设计了覆盖营销全链路的 15 组高质量 Prompt 模板与 6 个核心工作流。通过持续的工程优化与测试，最终将 AIGC 内容与业务场景的契合度提升了 30%，大幅缩短内容生产周期。AI 数据洞察： 负责构建了基于 Dify 的自动化数据分析工作流，实现了对超 2 万条社交媒体评论的深度分析。成功将非结构化数据转化为“用户槽点/赞点”、情感倾向、核心用户画像等高价值商业洞察，为产品迭代与营销策略提供了数据决策支持。产品设计与交付： 独立运用墨刀，完成了平台核心功能的高保真原型设计。通过清晰的信息架构与数据可视化方案，有效降低了业务人员理解和使用复杂数据分析功能的门槛。",
+                technologies: ["AIGC / 生成式 AI", "智能营销", "Prompt Engineering", "数据洞察", "产品设计", "工作流设计 (Workflow)"]
               }
             ].map((experience, index) => (
               <div key={index} className="relative pl-8 group text-left">
@@ -296,11 +299,12 @@ export default function Home() {
                         {experience.period}
                       </span>
                     </div>
-                    <p className="text-muted-foreground mb-3">{experience.position}</p>
-                    <p className="mb-4">{experience.description}</p>
+                    <p className="text-muted-foreground mb-3 font-mono">{experience.position}</p>
+                    <p className="text-muted-foreground mb-3 font-mono">{experience.project}</p>
+                    <p className="mb-4 font-mono">{experience.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {experience.technologies.map((tech) => (
-                        <span key={tech} className="px-3 py-1 rounded-full bg-accent text-sm transition-transform hover:scale-105">
+                        <span key={tech} className="px-3 py-1 rounded-full bg-accent text-sm transition-transform hover:scale-105 font-light">
                           {tech}
                         </span>
                       ))}
@@ -319,34 +323,40 @@ export default function Home() {
           <h2 className="text-4xl font-bold tracking-tighter mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-center">
             Featured Projects
           </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {projects.slice(0, 3).map((project) => (
-              <Link 
-                key={project.id} 
-                href={`/projects/${project.id}`}
-                className="group relative overflow-hidden rounded-xl border bg-background hover:border-foreground/50 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="p-5 relative text-center">
-                  <div className="mb-4 bg-muted rounded-lg h-40 flex items-center justify-center">
-                    {/* Placeholder for project image */}
-                    <BlocksIcon className="w-16 h-16 text-muted-foreground/50" />
+          <p className="text-lg text-muted-foreground font-mono text-center mb-8">
+          这里展示了我亲手打造的部分代表性项目，欢迎交流与探讨！
+          </p>
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
+              {projects.map((project) => (
+                <a
+                  key={project.id}
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative overflow-hidden rounded-xl border bg-background hover:border-foreground/50 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="p-5 relative text-center">
+                    <div className="mb-4 bg-muted rounded-lg h-40 flex items-center justify-center">
+                      {/* Placeholder for project image */}
+                      <BlocksIcon className="w-16 h-16 text-muted-foreground/50" />
+                    </div>
+                    <h3 className="font-semibold leading-none tracking-tight mb-2 group-hover:text-blue-600 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4 h-16 overflow-hidden whitespace-pre-line">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {project.techStack.map((tech) => (
+                        <span key={tech} className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors group-hover:border-blue-500/50">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className="font-semibold leading-none tracking-tight mb-2 group-hover:text-blue-600 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-4 h-10 overflow-hidden">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {project.techStack.map((tech) => (
-                      <span key={tech} className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors group-hover:border-blue-500/50">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="mt-16 text-center">
@@ -355,26 +365,25 @@ export default function Home() {
               variant="outline"
               className="group transition-all duration-300 hover:scale-105"
             >
-              <Link href="/projects" className="flex items-center">
+              {/* <Link href="/projects" className="flex items-center">
                 View All Projects
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </Link> */}
             </Button>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 relative bg-background">
+      <section id="contact" className="py-20 relative bg-background flex flex-col items-center justify-center">
         <div className="absolute top-20 right-20 w-40 h-40 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-[80px]"></div>
         <div className="absolute bottom-20 left-20 w-60 h-60 bg-blue-500/10 rounded-full mix-blend-multiply filter blur-[100px]"></div>
-        
-        <div className="container px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center">
+        <div className="container px-4 md:px-6 flex flex-col items-center justify-center">
+          <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
             <h2 className="text-4xl font-bold tracking-tighter mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Get in Touch
             </h2>
-            <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground font-mono mb-8 text-center">
               我随时乐于接受新的挑战和合作机会。随时通过以下方式与我联系！
             </p>
             

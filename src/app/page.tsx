@@ -238,7 +238,6 @@ export default function Home() {
                       <img src="https://img.shields.io/badge/-Gradio-F39019?style=flat-square&logo=gradio&logoColor=white" alt="Gradio" />
                       <img src="https://img.shields.io/badge/-Dify-4B32C3?style=flat-square&logo=dify&logoColor=white" alt="Dify" />
                       <img src="https://img.shields.io/badge/-Coze-00ADD8?style=flat-square&logo=coze&logoColor=white" alt="Coze" />
-                      <img src="https://img.shields.io/badge/-n8n.cloud-FE6100?style=flat-square&logo=n8n&logoColor=white" alt="n8n.cloud" />
                       <img src="https://img.shields.io/badge/-Camel-FF6B6B?style=flat-square&logo=camel&logoColor=white" alt="Camel" />
                       <img src="https://img.shields.io/badge/-Mofa-4A90E2?style=flat-square&logo=mofa&logoColor=white" alt="Mofa" />
                       <img src="https://img.shields.io/badge/-SearXNG-7289DA?style=flat-square&logo=search&logoColor=white" alt="SearXNG" />

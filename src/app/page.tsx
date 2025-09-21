@@ -5,11 +5,12 @@ import { Button } from "@/components/ui/button";
 import { 
   Github, Linkedin, Mail, BriefcaseIcon, 
   GraduationCapIcon, MessageSquareIcon, ArrowRight, 
-  BlocksIcon
+  BlocksIcon, FolderGit, ExternalLink
 } from "lucide-react";
 import { projects } from "@/lib/data/projects";
 import ScrollIndicator from "../components/ScrollIndicator";
 import { useState, useRef, useEffect } from "react";
+import Image from 'next/image';
 
 export default function Home() {
   const [inputValue, setInputValue] = useState("");
@@ -179,8 +180,8 @@ export default function Home() {
                 </h2>
                 <p className="font-mono text-lg text-muted-foreground leading-relaxed">你好，我是 威朵 ！</p>
                 <p className="font-mono text-lg text-muted-foreground leading-relaxed">一名 AI 产品路上的探索者与实践者（也是个爱捣鼓代码的创意开发者！）。</p>
-                <p className="font-mono text-lg text-muted-foreground leading-relaxed">我对 AI 无比着迷，并通过多项 AI 产品实习，锻炼了快速学习、洞察需求，以及运用 LLM、RAG、AI Agent 等技术设计创新方案的能力。</p>
-                <p className="font-mono text-lg text-muted-foreground leading-relaxed">我热衷协作，对新事物充满好奇，立志打造能带来真正价值和惊喜的产品体验。</p>
+                <p className="font-mono text-lg text-muted-foreground leading-relaxed">我对 AI 无比着迷，并通过多项 AI 产品实习，锻炼了快速学习、洞察需求，评测量化产品性能，以及运用 LLM、RAG、AI Agent 等技术设计创新方案的能力。</p>
+                <p className="font-mono text-lg text-muted-foreground leading-relaxed">我热衷协作，对新事物充满好奇，希望打造能带来真正价值和惊喜的产品体验。</p>
               </div>
               {/* 右侧：形象+学历经历 */}
               <div className="relative">
@@ -324,10 +325,18 @@ export default function Home() {
           <div className="space-y-12 max-w-3xl mx-auto">
             {[
               {
+                company: "字节跳动",
+                position: "AI数据技术（策略产品）",
+                project: "豆包 - Agent",
+                period: "2025.09 - 至今",
+                description: "负责AI Agent核心评测体系搭建，设计覆盖任务完成率、响应效率、决策准确性等多维度的量化指标及其细化指标，为模型性能评估提供科学依据。全链路跟进AI Agent迭代生命周期，从需求拆解、策略优化到效果验证全程把控，推动迭代版本性能提升与体验优化，保障产品核心能力稳定落地。",
+                technologies: ["AI Agent", "竞品分析", "Prompt Engineering", "Agent评测制定"]
+              },
+              {
                 company: "德融宝科技（深圳）有限公司",
                 position: "AI产品经理",
                 project: "AI 驱动的传感器行业智能服务产品",
-                period: "2025.02 - 至今",
+                period: "2025.02 - 2025.07",
                 description: "商业成果：针对传感器行业选型周期长、服务成本高的痛点，参与产品功能从 0 到 1 落地。独立设计的产品原型获北方兵工业集团高度认可，为公司赢取百万级合同奠定了关键基础。性能优化：负责 AI Agent 核心工作流与 Prompt 设计，通过测试将“智能产品选型”任务成功率提升 85%，显著缩短了潜在销售周期。技术基建：主导构建了项目核心的 RAG 知识库，处理并向量化逾 9 万条行业数据，打造了可复用的 AI 服务底层资产。",
                 technologies: ["RAG", "AI Agent", "从 0 到 1 (产品全周期)", "Prompt Engineering", "提效降本", "高保真原型", "知识库构建"]
               },
@@ -385,7 +394,7 @@ export default function Home() {
             Featured Projects
           </h2>
           <p className="text-lg text-muted-foreground font-mono text-center mb-8">
-          这里展示了我亲手打造的部分代表性项目，欢迎交流与探讨！
+            这里展示了我亲手打造的部分代表性项目，欢迎交流与探讨！
           </p>
           <div className="flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
@@ -400,8 +409,28 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <div className="p-5 relative text-center">
                     <div className="mb-4 bg-muted rounded-lg h-40 flex items-center justify-center">
-                      {/* Placeholder for project image */}
-                      <BlocksIcon className="w-16 h-16 text-muted-foreground/50" />
+                      {/* 显示第一张项目图片，如果没有则显示占位符 */}
+                      {project.images && project.images.length > 0 ? (
+                        <Image
+                          src={project.images[0]}
+                          alt={project.title}
+                          width={200}
+                          height={160}
+                          className="w-full h-full object-cover rounded-lg"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const placeholder = target.nextElementSibling as HTMLElement;
+                            if (placeholder) placeholder.style.display = 'flex';
+                          }}
+                        />
+                      ) : null}
+                      <div 
+                        className="w-full h-full flex items-center justify-center"
+                        style={{ display: project.images && project.images.length > 0 ? 'none' : 'flex' }}
+                      >
+                        <BlocksIcon className="w-16 h-16 text-muted-foreground/50" />
+                      </div>
                     </div>
                     <h3 className="font-semibold leading-none tracking-tight mb-2 group-hover:text-blue-600 transition-colors">
                       {project.title}
@@ -420,18 +449,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-16 text-center">
-            <Button 
-              asChild 
-              variant="outline"
-              className="group transition-all duration-300 hover:scale-105"
-            >
-              {/* <Link href="/projects" className="flex items-center">
-                View All Projects
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link> */}
-            </Button>
-          </div>
+          
         </div>
       </section>
 
@@ -445,7 +463,7 @@ export default function Home() {
               Get in Touch
             </h2>
             <p className="text-lg text-muted-foreground font-mono mb-8 text-center">
-              我随时乐于接受新的挑战和合作机会。随时通过以下方式与我联系！
+              我乐于接受新的挑战和合作机会。随时通过以下方式与我联系！
             </p>
             
             <div className="flex justify-center space-x-4 md:space-x-6">

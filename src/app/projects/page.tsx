@@ -71,7 +71,7 @@ export default function ProjectsPage() {
                           className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-colors"
                         >
                           <ExternalLink className="h-4 w-4" />
-                          在线演示
+                          {project.demo.endsWith('.mp4') ? '观看演示' : '在线演示'}
                         </Link>
                       )}
                     </div>
@@ -82,7 +82,9 @@ export default function ProjectsPage() {
               {/* 右侧：产品截图展示 */}
               <div className="lg:w-1/2 p-8 bg-gradient-to-br from-muted/30 to-muted/10">
                 <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-center mb-6">产品截图</h4>
+                  <h4 className="text-lg font-semibold text-center mb-6">
+                    {project.demo && project.demo.endsWith('.mp4') ? '产品演示' : '产品截图'}
+                  </h4>
                   
                   <div className="grid grid-cols-1 gap-4">
                     {project.images.map((image, imgIndex) => (
@@ -96,23 +98,7 @@ export default function ProjectsPage() {
                             alt={`${project.title} 截图 ${imgIndex + 1}`}
                             fill
                             className="object-cover group-hover/image:scale-105 transition-transform duration-300"
-                            onError={(e) => {
-                              // 如果图片加载失败，显示占位符
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = 'none';
-                              const placeholder = target.nextElementSibling as HTMLElement;
-                              if (placeholder) placeholder.style.display = 'flex';
-                            }}
                           />
-                          <div 
-                            className="absolute inset-0 bg-muted flex items-center justify-center text-muted-foreground"
-                            style={{ display: 'none' }}
-                          >
-                            <div className="text-center">
-                              <FolderGit className="h-12 w-12 mx-auto mb-2 opacity-50" />
-                              <p className="text-sm">图片加载中...</p>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     ))}

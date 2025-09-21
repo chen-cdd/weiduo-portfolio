@@ -417,20 +417,10 @@ export default function Home() {
                           width={200}
                           height={160}
                           className="w-full h-full object-cover rounded-lg"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                            const placeholder = target.nextElementSibling as HTMLElement;
-                            if (placeholder) placeholder.style.display = 'flex';
-                          }}
                         />
-                      ) : null}
-                      <div 
-                        className="w-full h-full flex items-center justify-center"
-                        style={{ display: project.images && project.images.length > 0 ? 'none' : 'flex' }}
-                      >
+                      ) : (
                         <BlocksIcon className="w-16 h-16 text-muted-foreground/50" />
-                      </div>
+                      )}
                     </div>
                     <h3 className="font-semibold leading-none tracking-tight mb-2 group-hover:text-blue-600 transition-colors">
                       {project.title}
